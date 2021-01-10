@@ -5,10 +5,13 @@ import javax.swing.*;
 public class ClickerPresenter {
     private ClickerView view;
     private Formatter formatter;
+
     private double apples = 0;
     private double applesPerSecond = 0;
+    private int clickMultiplier = 1;
     private Timer timer;
 
+    //workers
     private int kidPrice = 10;
     private int farmerPrice = 50;
     private int grandmaPrice = 200;
@@ -17,6 +20,9 @@ public class ClickerPresenter {
     private int factoryPrice = 5000;
     private int lohnPrice = 20000;
     private int herblingenPrice = 100000;
+
+    //upgrades
+    private int doubleClickPrice = 0;
 
 
     public ClickerPresenter(ClickerView view) {
@@ -39,6 +45,8 @@ public class ClickerPresenter {
         view.setFactoryPriceLabel(formatter.format(factoryPrice));
         view.setLohnPriceLabel(formatter.format(lohnPrice));
         view.setHerblingenPriceLabel(formatter.format(herblingenPrice));
+
+        view.setDoubleClickPriceLabel(formatter.format(doubleClickPrice));
     }
 
     public void kidBought() {
@@ -116,13 +124,22 @@ public class ClickerPresenter {
             applesPerSecond += 10000;
             apples -= herblingenPrice;
             herblingenPrice += herblingenPrice;
-            view.setLohnPriceLabel(formatter.format(herblingenPrice));
+            view.setHerblingenPriceLabel(formatter.format(herblingenPrice));
             updateTimer();
         }
     }
 
+    public void doubleClickBought() {
+        if (apples >= doubleClickPrice) {
+            clickMultiplier = 2;
+            view.setDoubleClickPriceLabel("Sold out");
+            view.getDoubleClickButton().setEnabled(false);
+            apples -= doubleClickPrice;
+        }
+    }
+
     public void addApple() {
-        apples++;
+        apples += clickMultiplier;
         setAppleFormat();
     }
 

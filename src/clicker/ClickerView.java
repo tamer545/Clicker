@@ -25,15 +25,22 @@ public class ClickerView extends JFrame {
     private JLabel lohnPriceLabel;
     private JButton herblingenButton;
     private JLabel herblingenPriceLabel;
+    private JButton doubleClickButton;
+    private JButton quintupleClickButton;
+    private JButton halfOfApplesPerButton;
+    private JLabel doubleClickPriceLabel;
 
     private ClickerPresenter presenter;
 
     public ClickerView() {
         setContentPane(mainPanel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(800, 600);
+        setSize(1000, 600);
         setVisible(true);
 
+        applesButton.addActionListener(e -> presenter.addApple());
+
+        //workers
         kidsButton.addActionListener(e -> presenter.kidBought());
         farmerButton.addActionListener(e -> presenter.farmerBought());
         grandmaButton.addActionListener(e -> presenter.grandmaBought());
@@ -42,8 +49,9 @@ public class ClickerView extends JFrame {
         factoryButton.addActionListener(e -> presenter.factoryBought());
         lohnButton.addActionListener(e -> presenter.lohnBought());
         herblingenButton.addActionListener(e -> presenter.herblingenBought());
-        applesButton.addActionListener(e -> presenter.addApple());
 
+        //upgrades
+        doubleClickButton.addActionListener(e -> presenter.doubleClickBought());
     }
 
     public void setPresenter(ClickerPresenter presenter) {
@@ -88,6 +96,12 @@ public class ClickerView extends JFrame {
 
     public void setHerblingenPriceLabel(String text) {
         herblingenPriceLabel.setText(text);
+    }
+    public void setDoubleClickPriceLabel(String text){
+        doubleClickPriceLabel.setText(text);
+    }
+    public JButton getDoubleClickButton(){
+        return doubleClickButton;
     }
 
 }
