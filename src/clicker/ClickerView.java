@@ -3,15 +3,11 @@ package clicker;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class ClickerView extends JFrame {
-    private JPanel buttonPanel;
     private JButton kidsButton;
     private JLabel appleLabel;
     private JPanel mainPanel;
-    private JLabel infoLabel;
     private JButton farmerButton;
     private JLabel perSecLabel;
     private JLabel kidPriceLabel;
@@ -24,6 +20,11 @@ public class ClickerView extends JFrame {
     private JLabel tractorPriceLabel;
     private JButton factoryButton;
     private JLabel factoryPriceLabel;
+    private JButton applesButton;
+    private JButton lohnButton;
+    private JLabel lohnPriceLabel;
+    private JButton herblingenButton;
+    private JLabel herblingenPriceLabel;
 
     private ClickerPresenter presenter;
 
@@ -39,6 +40,10 @@ public class ClickerView extends JFrame {
         grandpaButton.addActionListener(e -> presenter.grandpaBought());
         tractorButton.addActionListener(e -> presenter.tractorBought());
         factoryButton.addActionListener(e -> presenter.factoryBought());
+        lohnButton.addActionListener(e -> presenter.lohnBought());
+        herblingenButton.addActionListener(e -> presenter.herblingenBought());
+        applesButton.addActionListener(e -> presenter.addApple());
+
     }
 
     public void setPresenter(ClickerPresenter presenter) {
@@ -73,7 +78,16 @@ public class ClickerView extends JFrame {
         tractorPriceLabel.setText(text);
     }
 
-    public void setFactoryPriceLabel(String text){
+    public void setFactoryPriceLabel(String text) {
         factoryPriceLabel.setText(text);
     }
+
+    public void setLohnPriceLabel(String text) {
+        lohnPriceLabel.setText(text);
+    }
+
+    public void setHerblingenPriceLabel(String text) {
+        herblingenPriceLabel.setText(text);
+    }
+
 }
