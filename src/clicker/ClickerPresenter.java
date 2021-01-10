@@ -22,7 +22,9 @@ public class ClickerPresenter {
     private int herblingenPrice = 100000;
 
     //upgrades
-    private int doubleClickPrice = 0;
+    private int doubleClickPrice = 100;
+    private int quintubleClickPrice = 500;
+    private int hundredTimesClickPrice = 10000;
 
 
     public ClickerPresenter(ClickerView view) {
@@ -47,6 +49,9 @@ public class ClickerPresenter {
         view.setHerblingenPriceLabel(formatter.format(herblingenPrice));
 
         view.setDoubleClickPriceLabel(formatter.format(doubleClickPrice));
+        view.setQuintubleClickPriceLabel(formatter.format(quintubleClickPrice));
+        view.setHundredTimesClickPriceLabel(formatter.format(hundredTimesClickPrice));
+
     }
 
     public void kidBought() {
@@ -138,6 +143,24 @@ public class ClickerPresenter {
         }
     }
 
+    public void quintubleClickBought() {
+        if (apples >= quintubleClickPrice) {
+            clickMultiplier = 5;
+            view.setQuintubleClickPriceLabel("Sold out");
+            view.getQuintupleClickButton().setEnabled(false);
+            apples -= quintubleClickPrice;
+        }
+    }
+
+    public void hundredTimesClickBought() {
+        if (apples >= hundredTimesClickPrice) {
+            clickMultiplier = 100;
+            view.setHundredTimesClickPriceLabel("Sold out");
+            view.getHundredTimesClickButton().setEnabled(false);
+            apples -= hundredTimesClickPrice;
+        }
+    }
+
     public void addApple() {
         apples += clickMultiplier;
         setAppleFormat();
@@ -152,5 +175,7 @@ public class ClickerPresenter {
         view.setPerSecLabel(formatter.format(applesPerSecond));
         setAppleFormat();
     }
+
+
 }
 

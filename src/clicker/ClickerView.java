@@ -1,6 +1,7 @@
 package clicker;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -27,8 +28,18 @@ public class ClickerView extends JFrame {
     private JLabel herblingenPriceLabel;
     private JButton doubleClickButton;
     private JButton quintupleClickButton;
-    private JButton halfOfApplesPerButton;
+    private JButton hundredTimesClickButton;
     private JLabel doubleClickPriceLabel;
+    private JLabel quintubleClickPriceLabel;
+    private JLabel hundredTimesClickPriceLabel;
+    private JButton bankButton;
+    private JButton mineButton;
+    private JButton templeButton;
+    private JButton magicButton;
+    private JButton shipmentButton;
+    private JButton cargoButton;
+    private JButton labButton;
+    private JButton portalButton;
 
     private ClickerPresenter presenter;
 
@@ -37,6 +48,12 @@ public class ClickerView extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(1000, 600);
         setVisible(true);
+
+        Image appleButtonIcon = new ImageIcon("apple-icon.png").getImage();
+        applesButton.setIcon(new ImageIcon(appleButtonIcon));
+        applesButton.setBorderPainted(false);
+        applesButton.setContentAreaFilled(false);
+        applesButton.setFocusPainted(false);
 
         applesButton.addActionListener(e -> presenter.addApple());
 
@@ -52,6 +69,18 @@ public class ClickerView extends JFrame {
 
         //upgrades
         doubleClickButton.addActionListener(e -> presenter.doubleClickBought());
+        quintupleClickButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                presenter.quintubleClickBought();
+            }
+        });
+        hundredTimesClickButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                presenter.hundredTimesClickBought();
+            }
+        });
     }
 
     public void setPresenter(ClickerPresenter presenter) {
@@ -97,11 +126,29 @@ public class ClickerView extends JFrame {
     public void setHerblingenPriceLabel(String text) {
         herblingenPriceLabel.setText(text);
     }
-    public void setDoubleClickPriceLabel(String text){
+
+    //Upgrades
+    public void setDoubleClickPriceLabel(String text) {
         doubleClickPriceLabel.setText(text);
     }
-    public JButton getDoubleClickButton(){
+
+    public JButton getDoubleClickButton() {
         return doubleClickButton;
     }
 
+    public void setQuintubleClickPriceLabel(String text) {
+        quintubleClickPriceLabel.setText(text);
+    }
+
+    public JButton getQuintupleClickButton() {
+        return quintupleClickButton;
+    }
+
+    public void setHundredTimesClickPriceLabel(String text) {
+        hundredTimesClickPriceLabel.setText(text);
+    }
+
+    public JButton getHundredTimesClickButton() {
+        return hundredTimesClickButton;
+    }
 }
