@@ -10,6 +10,7 @@ public class ClickerPresenter {
     private double applesPerSecond = 0;
     private int applesGeneratedByClicking = 0;
     private int clickMultiplier = 1;
+    private int generatedByWorkers = 0;
     private Timer timer;
 
     //workers
@@ -38,6 +39,7 @@ public class ClickerPresenter {
 
 
             apples += applesPerSecond;
+            generatedByWorkers += applesPerSecond;
 
             setAppleFormat();
         });
@@ -187,6 +189,7 @@ public class ClickerPresenter {
 
     public void updateTimer() {
         timer.start();
+        view.setGeneratedByWorkersLabel(formatter.format(generatedByWorkers));
         view.setPerSecLabel(formatter.format(applesPerSecond));
         view.setApplesByClickingLabel(formatter.format(applesGeneratedByClicking));
         setAppleFormat();

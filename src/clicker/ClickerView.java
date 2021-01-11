@@ -42,6 +42,7 @@ public class ClickerView extends JFrame {
     private JButton portalButton;
     private JLabel bankPriceLabel;
     private JLabel applesByClickingLabel;
+    private JLabel generatedByWorkersLabel;
 
     private ClickerPresenter presenter;
 
@@ -82,6 +83,10 @@ public class ClickerView extends JFrame {
 
     public void setApplesByClickingLabel(String text) {
         applesByClickingLabel.setText(text);
+    }
+
+    public void setGeneratedByWorkersLabel(String text){
+        generatedByWorkersLabel.setText(text);
     }
 
     public void setAppleLabel(String text) {
