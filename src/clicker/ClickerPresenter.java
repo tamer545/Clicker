@@ -189,6 +189,7 @@ public class ClickerPresenter {
         view.setGeneratedByWorkersLabel(formatter.format(generatedByWorkers));
         view.setPerSecLabel(formatter.format(applesPerSecond));
         view.setApplesByClickingLabel(formatter.format(applesGeneratedByClicking));
+        view.setGeneratedInTotalLabel(formatter.format(applesGeneratedByClicking + generatedByWorkers));
     }
 
     public void updateTimer() {

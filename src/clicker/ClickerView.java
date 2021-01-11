@@ -43,6 +43,7 @@ public class ClickerView extends JFrame {
     private JLabel bankPriceLabel;
     private JLabel applesByClickingLabel;
     private JLabel generatedByWorkersLabel;
+    private JLabel generatedInTotalLabel;
 
     private ClickerPresenter presenter;
 
@@ -85,8 +86,12 @@ public class ClickerView extends JFrame {
         applesByClickingLabel.setText(text);
     }
 
-    public void setGeneratedByWorkersLabel(String text){
+    public void setGeneratedByWorkersLabel(String text) {
         generatedByWorkersLabel.setText(text);
+    }
+
+    public void setGeneratedInTotalLabel(String text) {
+        generatedInTotalLabel.setText(text);
     }
 
     public void setAppleLabel(String text) {
