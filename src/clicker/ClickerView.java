@@ -40,13 +40,15 @@ public class ClickerView extends JFrame {
     private JButton cargoButton;
     private JButton labButton;
     private JButton portalButton;
+    private JLabel bankPriceLabel;
+    private JLabel applesByClickingLabel;
 
     private ClickerPresenter presenter;
 
     public ClickerView() {
         setContentPane(mainPanel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(1000, 600);
+        setSize(1050, 600);
         setVisible(true);
 
         Image appleButtonIcon = new ImageIcon("apple-icon.png").getImage();
@@ -66,25 +68,20 @@ public class ClickerView extends JFrame {
         factoryButton.addActionListener(e -> presenter.factoryBought());
         lohnButton.addActionListener(e -> presenter.lohnBought());
         herblingenButton.addActionListener(e -> presenter.herblingenBought());
+        bankButton.addActionListener(e -> presenter.bankBought());
 
         //upgrades
         doubleClickButton.addActionListener(e -> presenter.doubleClickBought());
-        quintupleClickButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                presenter.quintubleClickBought();
-            }
-        });
-        hundredTimesClickButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                presenter.hundredTimesClickBought();
-            }
-        });
+        quintupleClickButton.addActionListener(e -> presenter.quintubleClickBought());
+        hundredTimesClickButton.addActionListener(e -> presenter.hundredTimesClickBought());
     }
 
     public void setPresenter(ClickerPresenter presenter) {
         this.presenter = presenter;
+    }
+
+    public void setApplesByClickingLabel(String text) {
+        applesByClickingLabel.setText(text);
     }
 
     public void setAppleLabel(String text) {
@@ -125,6 +122,10 @@ public class ClickerView extends JFrame {
 
     public void setHerblingenPriceLabel(String text) {
         herblingenPriceLabel.setText(text);
+    }
+
+    public void setBankPriceLabel(String text) {
+        bankPriceLabel.setText(text);
     }
 
     //Upgrades

@@ -8,6 +8,7 @@ public class ClickerPresenter {
 
     private double apples = 0;
     private double applesPerSecond = 0;
+    private int applesGeneratedByClicking = 0;
     private int clickMultiplier = 1;
     private Timer timer;
 
@@ -20,6 +21,7 @@ public class ClickerPresenter {
     private int factoryPrice = 5000;
     private int lohnPrice = 20000;
     private int herblingenPrice = 100000;
+    private int bankPrice = 2000000;
 
     //upgrades
     private int doubleClickPrice = 100;
@@ -47,6 +49,7 @@ public class ClickerPresenter {
         view.setFactoryPriceLabel(formatter.format(factoryPrice));
         view.setLohnPriceLabel(formatter.format(lohnPrice));
         view.setHerblingenPriceLabel(formatter.format(herblingenPrice));
+        view.setBankPriceLabel(formatter.format(bankPrice));
 
         view.setDoubleClickPriceLabel(formatter.format(doubleClickPrice));
         view.setQuintubleClickPriceLabel(formatter.format(quintubleClickPrice));
@@ -134,6 +137,16 @@ public class ClickerPresenter {
         }
     }
 
+    public void bankBought() {
+        if (apples >= bankPrice) {
+            applesPerSecond += 100000;
+            apples -= bankPrice;
+            bankPrice += bankPrice;
+            view.setBankPriceLabel(formatter.format(bankPrice));
+            updateTimer();
+        }
+    }
+
     public void doubleClickBought() {
         if (apples >= doubleClickPrice) {
             clickMultiplier = 2;
@@ -163,7 +176,9 @@ public class ClickerPresenter {
 
     public void addApple() {
         apples += clickMultiplier;
+        applesGeneratedByClicking += clickMultiplier;
         setAppleFormat();
+        updateTimer();
     }
 
     public void setAppleFormat() {
@@ -173,6 +188,7 @@ public class ClickerPresenter {
     public void updateTimer() {
         timer.start();
         view.setPerSecLabel(formatter.format(applesPerSecond));
+        view.setApplesByClickingLabel(formatter.format(applesGeneratedByClicking));
         setAppleFormat();
     }
 
