@@ -40,6 +40,7 @@ public class ClickerPresenter {
 
             apples += applesPerSecond;
             generatedByWorkers += applesPerSecond;
+            System.out.println(generatedByWorkers);
 
             setAppleFormat();
         });
@@ -185,13 +186,13 @@ public class ClickerPresenter {
 
     public void setAppleFormat() {
         view.setAppleLabel(formatter.format(Math.floor(apples)));
+        view.setGeneratedByWorkersLabel(formatter.format(generatedByWorkers));
+        view.setPerSecLabel(formatter.format(applesPerSecond));
+        view.setApplesByClickingLabel(formatter.format(applesGeneratedByClicking));
     }
 
     public void updateTimer() {
         timer.start();
-        view.setGeneratedByWorkersLabel(formatter.format(generatedByWorkers));
-        view.setPerSecLabel(formatter.format(applesPerSecond));
-        view.setApplesByClickingLabel(formatter.format(applesGeneratedByClicking));
         setAppleFormat();
     }
 
